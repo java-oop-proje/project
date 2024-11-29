@@ -2,6 +2,8 @@ package org.example.demo.database;
 
 
 import io.github.cdimascio.dotenv.Dotenv;
+import org.example.demo.models.Users;
+import org.example.demo.utils.PasswordHasher;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,5 +44,29 @@ public class Database {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public boolean CreateUser(Users user) {
+        PasswordHasher hasher = new PasswordHasher();
+        user.setPassword(hasher.hashPassword(user.getPassword()));
+        try {
+            boolean result = connection.createStatement().execute("INSERT INTO users (first_name, last_name, email, password) VALUES ('" + user.getFirstName() + "', '" + user.getLastName() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')");
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean Login(String email, String password) {
+        PasswordHasher hasher = new PasswordHasher();
+        try {
+            boolean result = connection.createStatement().execute("SELECT * FROM users WHERE email = '" + email + "' AND password = '" + hasher.hashPassword(password) + "'");
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
