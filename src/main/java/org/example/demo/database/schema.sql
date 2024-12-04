@@ -1,6 +1,6 @@
-CREATE USER buildog WITH PASSWORD 'your-beautiful-password';
-CREATE DATABASE buildog;
-GRANT ALL PRIVILEGES ON DATABASE buildog TO buildog;
+CREATE USER oop WITH PASSWORD 'your-beautiful-password';
+CREATE DATABASE oop;
+GRANT ALL PRIVILEGES ON DATABASE oop TO oop;
 
 
 CREATE TABLE IF NOT EXISTS users (
