@@ -7,6 +7,7 @@ import org.example.demo.utils.PasswordHasher;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Database {
@@ -61,8 +62,8 @@ public class Database {
     public boolean Login(String email, String password) {
         PasswordHasher hasher = new PasswordHasher();
         try {
-            boolean result = connection.createStatement().execute("SELECT * FROM users WHERE email = '" + email + "' AND password = '" + hasher.hashPassword(password) + "'");
-            return result;
+            ResultSet result = connection.createStatement().executeQuery("SELECT 1 FROM users WHERE email = '" + email + "' AND password = '" + hasher.hashPassword(password) + "'");
+            return result.first();
         } catch (SQLException e) {
             e.printStackTrace();
         }
