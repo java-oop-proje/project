@@ -5,10 +5,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import org.example.demo.models.Users;
 import org.example.demo.utils.PasswordHasher;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Database {
     private static Database instance;
@@ -62,8 +59,14 @@ public class Database {
     public boolean Login(String email, String password) {
         PasswordHasher hasher = new PasswordHasher();
         try {
-            ResultSet result = connection.createStatement().executeQuery("SELECT 1 FROM users WHERE email = '" + email + "' AND password = '" + hasher.hashPassword(password) + "'");
-            return result.first();
+            ResultSet result = connection.createStatement().executeQuery("SELECT * FROM users WHERE email = '" + email + "'");
+
+            while (result.next()) {
+                String dbPassword = result.getString("password");
+                if (hasher.verifyPassword(password, dbPassword)) {
+                    return true;
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.RegisterController" alignment="CENTER">
+    <TextField fx:id="firstNameField" promptText="Adınızı giriniz" />
+    <TextField fx:id="lastNameField" promptText="Soyadınızı giriniz" />
+    <TextField fx:id="emailField" promptText="Yeni email adresinizi giriniz" />
+    <TextField fx:id="passwordField" promptText="Yeni şifrenizi giriniz" />
+    <Button text="Kayıt Ol" onAction="#handleRegister" />
+    <Button text="Girişe Dön" onAction="#goToLogin" />
+</VBox>
