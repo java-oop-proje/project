@@ -3,6 +3,17 @@
 <?import javafx.scene.layout.*?>
 
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.MainController" alignment="CENTER">
-    <Label text="Hoş geldiniz!" />
+    <TextField fx:id="streetAddressField" promptText="Home or Campus Street Address"/>
+    <TextField fx:id="cityField" promptText="City"/>
+    <TextField fx:id="stateField" promptText="State"/>
+    <TextField fx:id="zipField" promptText="Zip"/>
+    <TextField fx:id="phoneNumberField" promptText="Phone Number"/>
+    <TextArea fx:id="educationArea" promptText="Education"/>
+    <TextArea fx:id="studyAbroadArea" promptText="Study Abroad"/>
+    <TextArea fx:id="highSchoolArea" promptText="High School"/>
+    <TextArea fx:id="experienceArea" promptText="Experience"/>
+    <TextArea fx:id="leadershipActivitiesArea" promptText="Leadership &amp; Activities"/>
+    <TextArea fx:id="skillsInterestsArea" promptText="Skills &amp; Interests"/>
+    <Button text="Submit" onAction="#handleSubmitButtonAction"/>
     <Button text="Çıkış Yap" onAction="#logout" />
 </VBox>

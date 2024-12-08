@@ -1,16 +1,17 @@
 package org.example.demo;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.demo.controllers.SceneManager;
+
 
 import java.io.IOException;
 
 public class Main extends Application {
 
     public void start(Stage stage) throws IOException {
-        Scene loginScene = org.example.demo.controllers.SceneManager.getLoginScene();
+        Scene loginScene = SceneManager.getLoginScene();
         stage.setScene(loginScene);
         stage.setTitle("Uygulama");
         stage.show();

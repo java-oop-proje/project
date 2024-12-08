@@ -2,6 +2,7 @@ package org.example.demo.database;
 
 
 import io.github.cdimascio.dotenv.Dotenv;
+import org.example.demo.models.UserDetails;
 import org.example.demo.models.Users;
 import org.example.demo.utils.PasswordHasher;
 
@@ -44,33 +45,68 @@ public class Database {
         return connection;
     }
 
-    public boolean CreateUser(Users user) {
+    public int CreateUser(Users user) {
         PasswordHasher hasher = new PasswordHasher();
         user.setPassword(hasher.hashPassword(user.getPassword()));
-        try {
-            boolean result = connection.createStatement().execute("INSERT INTO users (first_name, last_name, email, password) VALUES ('" + user.getFirstName() + "', '" + user.getLastName() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')");
-            return result;
+        String sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ( ?, ?, ?, ?) RETURNING id";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, user.getFirstName());
+            pstmt.setString(2, user.getLastName());
+            pstmt.setString(3, user.getEmail());
+            pstmt.setString(4, user.getPassword());
+
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+
+            return rs.getInt(1) ;
         } catch (SQLException e) {
             e.printStackTrace();
+            return -1;
         }
-        return false;
     }
 
-    public boolean Login(String email, String password) {
+    public int Login(String email, String password) {
         PasswordHasher hasher = new PasswordHasher();
         try {
             ResultSet result = connection.createStatement().executeQuery("SELECT * FROM users WHERE email = '" + email + "'");
-
             while (result.next()) {
                 String dbPassword = result.getString("password");
                 if (hasher.verifyPassword(password, dbPassword)) {
-                    return true;
+                    return result.getInt("user_id");
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
+    }
 
-        return false;
+    public boolean InsertUserDetails(UserDetails userDetails) {
+        try {
+            String sql = "INSERT INTO user_details (user_id, phone_number, street_address, city, state, zip, education, study_abroad, high_school, experience, leadership_activities, skills_interests) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, userDetails.getUserId());
+            statement.setString(2, userDetails.getPhoneNumber());
+            statement.setString(3, userDetails.getStreetAddress());
+            statement.setString(4, userDetails.getCity());
+            statement.setString(5, userDetails.getState());
+            statement.setString(6, userDetails.getZip());
+            statement.setString(7, userDetails.getEducation());
+            statement.setString(8, userDetails.getStudyAbroad());
+            statement.setString(9, userDetails.getHighSchool());
+            statement.setString(10, userDetails.getExperience());
+            statement.setString(11, userDetails.getLeadershipActivities());
+            statement.setString(12, userDetails.getSkillsInterests());
+
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
