@@ -1,8 +1,10 @@
 package org.example.demo;
 
+import org.example.demo.models.Users;
+
 public class UserSession {
     private static UserSession instance;
-    private Integer userId;
+    private Users user;
 
     private UserSession() {}
 
@@ -13,11 +15,11 @@ public class UserSession {
         return instance;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Users getUser() {
+        return user;
     }
 }

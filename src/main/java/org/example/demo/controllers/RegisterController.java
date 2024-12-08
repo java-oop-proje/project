@@ -28,9 +28,9 @@ public class RegisterController {
     public void handleRegister() throws IOException {
         Database db = Database.getInstance();
         Users user = new Users(firstNameField.getText(), lastNameField.getText(), emailField.getText(), passwordField.getText());
-        int result = db.CreateUser(user);
-        if (result != -1) {
-            UserSession.getInstance().setUserId(result);
+        Users result = db.CreateUser(user);
+        if (result != null) {
+            UserSession.getInstance().setUser(result);
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Kayıt başarılı! Giriş ekranına yönlendiriliyorsunuz.", ButtonType.OK);
             alert.showAndWait();
             Stage stage = (Stage) emailField.getScene().getWindow();

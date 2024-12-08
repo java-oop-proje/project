@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.demo.UserSession;
 import org.example.demo.database.Database;
+import org.example.demo.models.Users;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class LoginController {
     private TextField passwordField;
 
     public void initialize() {
-        if (UserSession.getInstance().getUserId() != null) {
+        if (UserSession.getInstance().getUser() != null) {
             try {
                 Stage stage = (Stage) emailField.getScene().getWindow();
                 stage.setScene(SceneManager.getMainScene());
@@ -31,9 +32,9 @@ public class LoginController {
 
     public void handleLogin() throws IOException {
         Database db = Database.getInstance();
-        int result = db.Login(emailField.getText(), passwordField.getText());
-        if (result != -1) {
-            UserSession.getInstance().setUserId(result);
+        Users result = db.Login(emailField.getText(), passwordField.getText());
+        if (result != null) {
+            UserSession.getInstance().setUser(result);
             System.out.println("Giriş başarılı!");
             Stage stage = (Stage) emailField.getScene().getWindow();
             stage.setScene(SceneManager.getMainScene());

@@ -45,10 +45,10 @@ public class Database {
         return connection;
     }
 
-    public int CreateUser(Users user) {
+    public Users CreateUser(Users user) {
         PasswordHasher hasher = new PasswordHasher();
         user.setPassword(hasher.hashPassword(user.getPassword()));
-        String sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ( ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ( ?, ?, ?, ?) RETURNING id,firstname,lastname,email";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, user.getFirstName());
@@ -59,27 +59,29 @@ public class Database {
             ResultSet rs = pstmt.executeQuery();
             rs.next();
 
-            return rs.getInt(1) ;
+            Users newUser = new Users(rs.getInt("user_id"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), null);
+
+            return newUser ;
         } catch (SQLException e) {
             e.printStackTrace();
-            return -1;
+            return null;
         }
     }
 
-    public int Login(String email, String password) {
+    public Users Login(String email, String password) {
         PasswordHasher hasher = new PasswordHasher();
         try {
             ResultSet result = connection.createStatement().executeQuery("SELECT * FROM users WHERE email = '" + email + "'");
             while (result.next()) {
                 String dbPassword = result.getString("password");
                 if (hasher.verifyPassword(password, dbPassword)) {
-                    return result.getInt("user_id");
+                    return new Users(result.getInt("user_id"), result.getString("firstname"), result.getString("lastname"), result.getString("email"), null);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 
     public boolean InsertUserDetails(UserDetails userDetails) {
