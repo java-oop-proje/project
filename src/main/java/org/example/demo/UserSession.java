@@ -1,8 +1,9 @@
 package org.example.demo;
 
 import org.example.demo.models.Users;
+import org.example.demo.models.Session;
 
-public class UserSession {
+public class UserSession implements Session {
     private static UserSession instance;
     private Users user;
 
