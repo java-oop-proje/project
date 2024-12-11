@@ -37,7 +37,7 @@ public class LoginController {
             UserSession.getInstance().setUser(result);
             System.out.println("Giriş başarılı!");
             Stage stage = (Stage) emailField.getScene().getWindow();
-            stage.setScene(SceneManager.getMainScene());
+            stage.setScene(SceneManager.getfarukdosyaScene());
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Giriş başarısız! Bilgilerinizi kontrol ediniz.", ButtonType.OK);
             alert.showAndWait();

@@ -52,7 +52,6 @@ public class MainController {
         }
 
         WebEngine webEngine = pdfWebView.getEngine();
-        //i need to load the pdf file not google
         String htmlFilePath = getClass().getResource("/pdf/web/viewer.html").toExternalForm();
         webEngine.load(htmlFilePath);
     }

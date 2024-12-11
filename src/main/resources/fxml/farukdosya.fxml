@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Farukdosya">
+   <children>
+      <ListView layoutX="32.0" layoutY="43.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="253.0" layoutY="302.0" mnemonicParsing="false" text="Cv Oluştur">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="BOTTOM" layoutX="39.0" prefHeight="37.0" prefWidth="200.0" text="CV'LERİM" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

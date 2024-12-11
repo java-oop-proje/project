@@ -33,7 +33,6 @@ public class UserDetails {
         this.skillsInterests = skillsInterests;
     }
 
-    // Getters and Setters
     public int getDetailId() {
         return detailId;
     }

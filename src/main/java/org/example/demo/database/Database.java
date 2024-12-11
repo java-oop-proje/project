@@ -17,7 +17,6 @@ public class Database {
     private String dbhost;
     private String dbport;
 
-    // Private constructor to prevent instantiation
     private Database() {
         try {
             Dotenv dotenv = Dotenv.load();
