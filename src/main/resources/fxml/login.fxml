@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.LoginController" alignment="CENTER">
-    <TextField fx:id="emailField" promptText="Email adresinizi giriniz" />
-    <TextField fx:id="passwordField" promptText="Şifrenizi giriniz" />
-    <Button text="Giriş Yap" onAction="#handleLogin" />
-    <Button text="Kayıt ol" onAction="#goToRegister" />
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.LoginController" alignment="CENTER" style="-fx-background-color: #f0f0f0; -fx-padding: 20;">
+    <TextField fx:id="emailField" promptText="Email adresinizi giriniz" style="-fx-font-size: 14px; -fx-padding: 10;" />
+    <TextField fx:id="passwordField" promptText="Şifrenizi giriniz" style="-fx-font-size: 14px; -fx-padding: 10;" />
+    <Button text="Giriş Yap" onAction="#handleLogin" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
+    <Button text="Kayıt ol" onAction="#goToRegister" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
 </VBox>

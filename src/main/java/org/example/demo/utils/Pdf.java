@@ -10,6 +10,9 @@ import java.io.IOException;
 
 public class Pdf {
     public void generatePDF(UserDetails userDetails, Users user) throws IOException {
+        java.nio.file.Path pdfPath = java.nio.file.Paths.get("src/main/resources/pdf/cv.pdf");
+        java.nio.file.Files.deleteIfExists(pdfPath);
+        
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
@@ -90,7 +93,7 @@ public class Pdf {
         contentStream.endText();
         contentStream.close();
 
-        document.save("Harvard_CV.pdf");
+        document.save("src/main/resources/pdf/web/cv.pdf");
         document.close();
     }
 }

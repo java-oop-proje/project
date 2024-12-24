@@ -4,31 +4,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.WebView?>
 
-<VBox alignment="CENTER" prefHeight="1447.0" prefWidth="1090.0" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="org.example.demo.controllers.MainController">
+<VBox alignment="CENTER" prefHeight="1447.0" prefWidth="1090.0" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="org.example.demo.controllers.MainController" style="-fx-background-color: #f9f9f9; -fx-padding: 20;">
     <SplitPane dividerPositions="0.5" prefHeight="1000.0" prefWidth="200.0">
         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-padding: 10;">
                 <children>
-                    <TextField fx:id="streetAddressField" promptText="Home or Campus Street Address" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextField fx:id="cityField" promptText="City" AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextField fx:id="stateField" promptText="State" AnchorPane.topAnchor="90.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextField fx:id="zipField" promptText="Zip" AnchorPane.topAnchor="130.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextField fx:id="phoneNumberField" promptText="Phone Number" AnchorPane.topAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextArea fx:id="educationArea" promptText="Education" AnchorPane.topAnchor="210.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextArea fx:id="studyAbroadArea" promptText="Study Abroad" AnchorPane.topAnchor="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextArea fx:id="highSchoolArea" promptText="High School" AnchorPane.topAnchor="370.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextArea fx:id="experienceArea" promptText="Experience" AnchorPane.topAnchor="450.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextArea fx:id="leadershipActivitiesArea" promptText="Leadership &amp; Activities" AnchorPane.topAnchor="530.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-                    <TextArea fx:id="skillsInterestsArea" promptText="Skills &amp; Interests" AnchorPane.topAnchor="610.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+                    <TextField fx:id="streetAddressField" promptText="Home or Campus Street Address" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextField fx:id="cityField" promptText="City" AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextField fx:id="stateField" promptText="State" AnchorPane.topAnchor="90.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextField fx:id="zipField" promptText="Zip" AnchorPane.topAnchor="130.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextField fx:id="phoneNumberField" promptText="Phone Number" AnchorPane.topAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextArea fx:id="educationArea" promptText="Education" AnchorPane.topAnchor="210.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextArea fx:id="studyAbroadArea" promptText="Study Abroad" AnchorPane.topAnchor="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextArea fx:id="highSchoolArea" promptText="High School" AnchorPane.topAnchor="370.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextArea fx:id="experienceArea" promptText="Experience" AnchorPane.topAnchor="450.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextArea fx:id="leadershipActivitiesArea" promptText="Leadership &amp; Activities" AnchorPane.topAnchor="530.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                    <TextArea fx:id="skillsInterestsArea" promptText="Skills &amp; Interests" AnchorPane.topAnchor="610.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
                 </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="239.0" prefWidth="762.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="239.0" prefWidth="762.0" style="-fx-background-color: #ffffff; -fx-padding: 10;">
                 <children>
                     <WebView fx:id="pdfWebView" prefHeight="1000.0" prefWidth="1000.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0"/>
                 </children>
             </AnchorPane>
         </items>
     </SplitPane>
-    <Button onAction="#handleSubmitButtonAction" text="Submit" />
-    <Button onAction="#logout" text="Çıkış Yap" />
+    <Button onAction="#handleSubmitButtonAction" text="Submit" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
+    <Button onAction="#logout" text="Çıkış Yap" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
 </VBox>

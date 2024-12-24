@@ -7,6 +7,8 @@ import org.example.demo.models.Users;
 import org.example.demo.utils.PasswordHasher;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
     private static Database instance;
@@ -17,7 +19,7 @@ public class Database {
     private String dbhost;
     private String dbport;
 
-    private Database() {
+    public Database() {
         try {
             Dotenv dotenv = Dotenv.load();
             dbname = dotenv.get("DB_NAME");
@@ -109,5 +111,54 @@ public class Database {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<UserDetails> GetUserDetails(int userId) {
+        List<UserDetails> userDetails = new ArrayList<>();
+        String sql = "SELECT * FROM user_details WHERE user_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                userDetails.add(new UserDetails(
+                    rs.getInt("detail_id"), 
+                    rs.getInt("user_id"), 
+                    rs.getString("phone_number"),
+                    rs.getString("street_address"),
+                    rs.getString("city"),
+                    rs.getString("state"),
+                    rs.getString("zip"),
+                    rs.getString("education"),
+                    rs.getString("study_abroad"),
+                    rs.getString("high_school"),
+                    rs.getString("experience"),
+                    rs.getString("leadership_activities"),
+                    rs.getString("skills_interests")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userDetails;
+    }
+
+    public Users GetUserById(int userId) {
+        String sql = "SELECT * FROM users WHERE user_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Users(
+                    rs.getInt("user_id"),
+                    rs.getString("firstname"),
+                    rs.getString("lastname"),
+                    rs.getString("email"),
+                    null
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

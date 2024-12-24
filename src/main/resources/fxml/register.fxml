@@ -2,11 +2,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.RegisterController" alignment="CENTER">
-    <TextField fx:id="firstNameField" promptText="Adınızı giriniz" />
-    <TextField fx:id="lastNameField" promptText="Soyadınızı giriniz" />
-    <TextField fx:id="emailField" promptText="Yeni email adresinizi giriniz" />
-    <TextField fx:id="passwordField" promptText="Yeni şifrenizi giriniz" />
-    <Button text="Kayıt Ol" onAction="#handleRegister" />
-    <Button text="Girişe Dön" onAction="#goToLogin" />
+<VBox alignment="CENTER" spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.SettingsController" style="-fx-background-color: #f9f9f9; -fx-padding: 20;">
+    <Label text="Ayarlar" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <TextField fx:id="usernameField" promptText="Kullanıcı Adı" style="-fx-font-size: 14px; -fx-padding: 10;" />
+    <TextField fx:id="emailField" promptText="Email" style="-fx-font-size: 14px; -fx-padding: 10;" />
+    <PasswordField fx:id="passwordField" promptText="Yeni Şifre" style="-fx-font-size: 14px; -fx-padding: 10;" />
+    <Button text="Ayarları Kaydet" onAction="#handleSaveSettings" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
+    <Button text="Geri Dön" onAction="#goBack" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
 </VBox>

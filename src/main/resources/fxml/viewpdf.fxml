@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.controllers.ViewPdfController" style="-fx-background-color: #f9f9f9; -fx-padding: 20;">
+    <WebView fx:id="webView" prefHeight="600" prefWidth="800" style="-fx-border-color: #cccccc; -fx-border-width: 1;" />
+    <Button text="Geri Dön" onAction="#handleBackButton" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
+</VBox>

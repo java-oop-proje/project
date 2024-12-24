@@ -50,10 +50,6 @@ public class MainController {
                 e.printStackTrace();
             }
         }
-
-        WebEngine webEngine = pdfWebView.getEngine();
-        String htmlFilePath = getClass().getResource("/pdf/web/viewer.html").toExternalForm();
-        webEngine.load(htmlFilePath);
     }
 
     public void logout() throws IOException {
@@ -97,6 +93,7 @@ public class MainController {
         }
 
         WebEngine webEngine = pdfWebView.getEngine();
-        webEngine.load("Harvard_CV.pdf");
+        String htmlFilePath = getClass().getResource("/pdf/web/viewer.html").toExternalForm();
+        webEngine.load(htmlFilePath);
     }
 }
