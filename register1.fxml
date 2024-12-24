@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.RegisterController" alignment="CENTER">
+
+    <TextField fx:id="firstNameField" promptText="Adınızı giriniz" style="-fx-font-size: 14px; -fx-padding: 8px; -fx-background-color: #f0f0f0; -fx-border-radius: 5px; -fx-border-color: #cccccc;" />
+
+
+    <TextField fx:id="lastNameField" promptText="Soyadınızı giriniz" style="-fx-font-size: 14px; -fx-padding: 8px; -fx-background-color: #f0f0f0; -fx-border-radius: 5px; -fx-border-color: #cccccc;" />
+
+
+    <TextField fx:id="emailField" promptText="Yeni email adresinizi giriniz" style="-fx-font-size: 14px; -fx-padding: 8px; -fx-background-color: #f0f0f0; -fx-border-radius: 5px; -fx-border-color: #cccccc;" />
+
+
+    <TextField fx:id="passwordField" promptText="Yeni şifrenizi giriniz" style="-fx-font-size: 14px; -fx-padding: 8px; -fx-background-color: #f0f0f0; -fx-border-radius: 5px; -fx-border-color: #cccccc;" />
+
+
+    <Button fx:id="registerButton" text="Kayıt Ol" onAction="#handleRegister"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-cursor: hand;"
+            onMouseEntered="#onMouseEnterButton" onMouseExited="#onMouseExitButton" />
+
+
+    <Button fx:id="loginButton" text="Girişe Dön" onAction="#goToLogin"
+            style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-cursor: hand;"
+            onMouseEntered="#onMouseEnterButton" onMouseExited="#onMouseExitButton" />
+</VBox>

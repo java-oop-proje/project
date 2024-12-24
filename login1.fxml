@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.LoginController" alignment="CENTER" style="-fx-padding: 20px; -fx-background-color: #f4f4f4;">
+
+    <!-- Email Alanı -->
+    <Label fx:id="emailLabel" text="Email:" style="-fx-font-size: 14px; -fx-text-fill: black;" />
+    <TextField fx:id="emailField" promptText="Email adresinizi giriniz" style="-fx-font-size: 14px; -fx-padding: 8px; -fx-background-color: #f0f0f0; -fx-border-radius: 5px; -fx-border-color: #ccc;" />
+
+    <!-- Şifre Alanı -->
+    <Label fx:id="passwordLabel" text="Şifre:" style="-fx-font-size: 14px; -fx-text-fill: black;" />
+    <PasswordField fx:id="passwordField" promptText="Şifrenizi giriniz" style="-fx-font-size: 14px; -fx-padding: 8px; -fx-background-color: #f0f0f0; -fx-border-radius: 5px; -fx-border-color: #ccc;" />
+
+    <!-- Giriş Yap Butonu -->
+    <Button fx:id="loginButton" text="Giriş Yap" onAction="#handleLogin" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+
+    <!-- Kayıt Ol Butonu -->
+    <Button fx:id="registerButton" text="Kayıt Ol" onAction="#goToRegister" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+</VBox>
