@@ -12,7 +12,7 @@ public class SceneManager {
     private static Scene registerScene;
     private static Scene mainScene;
     private static Scene farukdosyaScene;
-    private static Scene viewPdfScene;
+    private Scene viewPdfScene;
 
     public static Scene getLoginScene() throws IOException {
         if (loginScene == null) {
@@ -42,10 +42,10 @@ public class SceneManager {
         return farukdosyaScene;
     }
 
-    public static Scene getViewPdfScene() throws IOException {
-        if (viewPdfScene == null) {
-            viewPdfScene = loadScene("/fxml/viewPdf.fxml");
-        }
+    public Scene getViewPdfScene() throws IOException {
+
+        viewPdfScene = loadScene("/fxml/viewPdf.fxml");
+
         return viewPdfScene;
     }
     public static Scene loadScene(String fxmlPath) throws IOException {

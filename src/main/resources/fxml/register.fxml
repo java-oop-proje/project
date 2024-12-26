@@ -1,12 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.SettingsController" style="-fx-background-color: #f9f9f9; -fx-padding: 20;">
-    <Label text="Ayarlar" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-    <TextField fx:id="usernameField" promptText="Kullanıcı Adı" style="-fx-font-size: 14px; -fx-padding: 10;" />
-    <TextField fx:id="emailField" promptText="Email" style="-fx-font-size: 14px; -fx-padding: 10;" />
-    <PasswordField fx:id="passwordField" promptText="Yeni Şifre" style="-fx-font-size: 14px; -fx-padding: 10;" />
-    <Button text="Ayarları Kaydet" onAction="#handleSaveSettings" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
-    <Button text="Geri Dön" onAction="#goBack" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
-</VBox>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="325.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.controllers.RegisterController">
+   <children>
+      <ImageView fitHeight="416.0" fitWidth="708.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/background.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="242.0" layoutY="20.0" prefHeight="347.0" prefWidth="249.0" spacing="15.0">
+         <children>
+             <Label prefHeight="29.0" prefWidth="81.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Kayıt ol" />
+            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="36.0" prefWidth="73.0" text="Ad">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                   <TextField fx:id="firstName" prefHeight="38.0" prefWidth="175.0" promptText="Ad" style="-fx-font-size: 14px; -fx-padding: 10;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="36.0" prefWidth="73.0" text="Soyad">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                   <TextField fx:id="lastName" prefHeight="38.0" prefWidth="173.0" promptText="Soyad" style="-fx-font-size: 14px; -fx-padding: 10;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="36.0" prefWidth="74.0" text="Email">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                   <TextField fx:id="emailField" promptText="Email" style="-fx-font-size: 14px; -fx-padding: 10;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="36.0" prefWidth="74.0" text="Şifre">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                   <PasswordField fx:id="passwordField" promptText="Şifre" style="-fx-font-size: 14px; -fx-padding: 10;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+               <children>
+                   <Button onAction="#handleRegister" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Kayıt ol" />
+                   <Button onAction="#goToLogin" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Geri Dön" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

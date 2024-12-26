@@ -1,31 +1,75 @@
 package org.example.demo.controllers;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.ByteArrayOutputStream;
+
 public class ViewPdfController {
-    @FXML
-    private WebView webView;
 
     @FXML
+    private ImageView imageView;
+    @FXML
+    private Button logoutButton;
+
     public void initialize() {
-        String webPagePath = getClass().getResource("/pdf/web/viewer.html").toExternalForm();
-        webView.getEngine().load(webPagePath);
+        loadPdfToImageView("./cv.pdf");
+    }
+
+    private void loadPdfToImageView(String pdfPath) {
+        try {
+            PDDocument document = PDDocument.load(new File(pdfPath));
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+
+            BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(0, 300);
+
+            Image image = bufferedImageToImage(bufferedImage);
+
+            imageView.setImage(image);
+
+            document.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void logout() throws IOException {
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.setScene(SceneManager.getLoginScene());
+    }
+
+    private Image bufferedImageToImage(BufferedImage bufferedImage) {
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+            byte[] imageData = byteArrayOutputStream.toByteArray();
+
+            return new Image(new java.io.ByteArrayInputStream(imageData));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @FXML
     private void handleBackButton() {
         try {
             Scene scene = SceneManager.getfarukdosyaScene();
-            Stage stage = (Stage) webView.getScene().getWindow();
+            Stage stage = (Stage) imageView.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
 }

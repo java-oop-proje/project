@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
 
-<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.controllers.LoginController" alignment="CENTER" style="-fx-background-color: #f0f0f0; -fx-padding: 20;">
-    <TextField fx:id="emailField" promptText="Email adresinizi giriniz" style="-fx-font-size: 14px; -fx-padding: 10;" />
-    <TextField fx:id="passwordField" promptText="Şifrenizi giriniz" style="-fx-font-size: 14px; -fx-padding: 10;" />
-    <Button text="Giriş Yap" onAction="#handleLogin" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
-    <Button text="Kayıt ol" onAction="#goToRegister" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" />
-</VBox>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.controllers.LoginController">
+   <children>
+      <ImageView fitHeight="416.0" fitWidth="668.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/background.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="243.0" layoutY="58.0" spacing="15" style="-fx-padding: 20;">
+         <Label prefHeight="31.0" prefWidth="101.0" text="Giriş Yap" textAlignment="CENTER">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+          <TextField fx:id="emailField" promptText="Email adresinizi giriniz" style="-fx-font-size: 14px; -fx-padding: 10;" />
+          <TextField fx:id="passwordField" promptText="Şifrenizi giriniz" style="-fx-font-size: 14px; -fx-padding: 10;" />
+         <HBox alignment="CENTER" prefHeight="73.0" prefWidth="200.0" spacing="25.0">
+            <children>
+                <Button onAction="#handleLogin" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Giriş Yap" />
+                <Button onAction="#goToRegister" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Kayıt ol" />
+            </children>
+         </HBox>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</AnchorPane>

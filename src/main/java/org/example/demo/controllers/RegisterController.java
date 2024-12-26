@@ -14,10 +14,10 @@ import java.io.IOException;
 public class RegisterController {
 
     @FXML
-    private TextField firstNameField;
+    private TextField firstName;
 
     @FXML
-    private TextField lastNameField;
+    private TextField lastName;
 
     @FXML
     private TextField emailField;
@@ -27,7 +27,7 @@ public class RegisterController {
 
     public void handleRegister() throws IOException {
         Database db = Database.getInstance();
-        Users user = new Users(firstNameField.getText(), lastNameField.getText(), emailField.getText(), passwordField.getText());
+        Users user = new Users(firstName.getText(), lastName.getText(), emailField.getText(), passwordField.getText());
         Users result = db.CreateUser(user);
         if (result != null) {
             UserSession.getInstance().setUser(result);

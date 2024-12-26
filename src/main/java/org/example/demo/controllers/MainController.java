@@ -4,19 +4,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.web.WebEngine;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
 import org.example.demo.UserSession;
 import org.example.demo.database.Database;
 import org.example.demo.models.UserDetails;
 import org.example.demo.utils.Pdf;
-import javafx.scene.web.WebView;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 public class MainController {
-    @FXML
-    private Button logoutButton;
+
     @FXML
     private TextField streetAddressField;
     @FXML
@@ -40,7 +45,9 @@ public class MainController {
     @FXML
     private TextArea skillsInterestsArea;
     @FXML
-    private WebView pdfWebView;
+    private ImageView imageView;
+    @FXML
+    private Button backButton;
 
     public void initialize() {
         if (UserSession.getInstance().getUser().getId() == -1) {
@@ -51,7 +58,8 @@ public class MainController {
             }
         }
     }
-
+    @FXML
+    private Button logoutButton;
     public void logout() throws IOException {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.setScene(SceneManager.getLoginScene());
@@ -92,8 +100,47 @@ public class MainController {
             e.printStackTrace();
         }
 
-        WebEngine webEngine = pdfWebView.getEngine();
-        String htmlFilePath = getClass().getResource("/pdf/web/viewer.html").toExternalForm();
-        webEngine.load(htmlFilePath);
+        loadPdfToImageView("./cv.pdf");
+    }
+
+    @FXML
+    public void backButtonHandler() {
+        try {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(SceneManager.getfarukdosyaScene());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void loadPdfToImageView(String pdfPath) {
+        try {
+            PDDocument document = PDDocument.load(new File(pdfPath));
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+
+            BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(0, 300);
+
+            Image image = bufferedImageToImage(bufferedImage);
+
+            imageView.setImage(image);
+
+            document.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image bufferedImageToImage(BufferedImage bufferedImage) {
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+            byte[] imageData = byteArrayOutputStream.toByteArray();
+
+            return new Image(new java.io.ByteArrayInputStream(imageData));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
