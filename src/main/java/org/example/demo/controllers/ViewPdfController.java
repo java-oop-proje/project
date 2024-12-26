@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
+import org.example.demo.utils.Pdf;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -44,6 +45,12 @@ public class ViewPdfController {
         }
     }
 
+    @FXML
+    public void downloadHandler() {
+        Pdf pdf = new Pdf();
+        pdf.downloadPDF();
+    }
+
     public void logout() throws IOException {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.setScene(SceneManager.getLoginScene());
@@ -65,7 +72,8 @@ public class ViewPdfController {
     @FXML
     private void handleBackButton() {
         try {
-            Scene scene = SceneManager.getfarukdosyaScene();
+            SceneManager sm = new SceneManager();
+            Scene scene = sm.getfarukdosyaScene();
             Stage stage = (Stage) imageView.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {

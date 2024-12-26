@@ -50,6 +50,7 @@
             <children>
                 <Button onAction="#handleSubmitButtonAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Pdf Oluştur" />
                <Button fx:id="backButton" onAction="#backButtonHandler" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Geri dön" />
+               <Button fx:id="downloadButton" onAction="#downloadHandler" prefHeight="38.0" prefWidth="71.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="İndir" />
             </children>
          </HBox>
       </VBox>

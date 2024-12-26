@@ -62,6 +62,7 @@ public class FarukDosyaController {
 
     @FXML
     public void initialize() {
+        System.out.println("FarukDosyaController initialize");
         try {
             Database db = new Database();
             List<UserDetails> userDetails = db.GetUserDetails(UserSession.getInstance().getUser().getId());
@@ -146,5 +147,11 @@ public class FarukDosyaController {
             System.err.println("CV Gör hatası: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void downloadHandler() {
+        Pdf pdf = new Pdf();
+        pdf.downloadPDF();
     }
 }

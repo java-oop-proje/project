@@ -6,10 +6,15 @@ import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.example.demo.models.UserDetails;
 import org.example.demo.models.Users;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class Pdf {
     private static final String PDF_PATH = "./cv.pdf";
@@ -97,6 +102,24 @@ public class Pdf {
             }
 
             document.save(PDF_PATH);
+        }
+    }
+
+    public void downloadPDF() {
+        String downloadDir = System.getProperty("user.home") + "/Downloads";
+        File file = new File(PDF_PATH);
+
+        try {
+            URL url = file.toURI().toURL();
+            InputStream in = url.openStream();
+            Path outputPath = Paths.get(downloadDir, "cv.pdf");
+            Files.copy(in, outputPath, StandardCopyOption.REPLACE_EXISTING);
+
+            System.out.println("PDF indirildi: " + outputPath.toString());
+
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

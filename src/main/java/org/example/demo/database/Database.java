@@ -49,7 +49,7 @@ public class Database {
     public Users CreateUser(Users user) {
         PasswordHasher hasher = new PasswordHasher();
         user.setPassword(hasher.hashPassword(user.getPassword()));
-        String sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ( ?, ?, ?, ?) RETURNING id,firstname,lastname,email";
+        String sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ( ?, ?, ?, ?) RETURNING user_id,firstname,lastname,email";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, user.getFirstName());

@@ -48,6 +48,9 @@ public class MainController {
     private ImageView imageView;
     @FXML
     private Button backButton;
+    @FXML
+    private Button downloadButton;
+    private boolean isPdfGenerated = false;
 
     public void initialize() {
         if (UserSession.getInstance().getUser().getId() == -1) {
@@ -56,6 +59,9 @@ public class MainController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        if (!isPdfGenerated){
+            backButton.setDisable(true);
         }
     }
     @FXML
@@ -67,6 +73,8 @@ public class MainController {
 
     @FXML
     private void handleSubmitButtonAction() throws IOException {
+        isPdfGenerated=false;
+        backButton.setDisable(true);
         String streetAddress = streetAddressField.getText();
         String city = cityField.getText();
         String state = stateField.getText();
@@ -107,10 +115,20 @@ public class MainController {
     public void backButtonHandler() {
         try {
             Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.setScene(SceneManager.getfarukdosyaScene());
+            SceneManager sm = new SceneManager();
+            stage.setScene(sm.getfarukdosyaScene());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void downloadHandler() {
+        if (!isPdfGenerated) {
+            return;
+        }
+        Pdf pdf = new Pdf();
+        pdf.downloadPDF();
     }
 
 
@@ -126,6 +144,8 @@ public class MainController {
             imageView.setImage(image);
 
             document.close();
+            isPdfGenerated = true;
+            backButton.setDisable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }

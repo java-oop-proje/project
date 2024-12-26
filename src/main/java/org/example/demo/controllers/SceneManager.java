@@ -11,7 +11,7 @@ public class SceneManager {
     private static Scene loginScene;
     private static Scene registerScene;
     private static Scene mainScene;
-    private static Scene farukdosyaScene;
+    private Scene farukdosyaScene;
     private Scene viewPdfScene;
 
     public static Scene getLoginScene() throws IOException {
@@ -35,7 +35,7 @@ public class SceneManager {
         return mainScene;
     }
 
-    public static Scene getfarukdosyaScene() throws IOException {
+    public Scene getfarukdosyaScene() throws IOException {
         if (farukdosyaScene == null) {
             farukdosyaScene = loadScene("/fxml/farukdosya.fxml");
         }

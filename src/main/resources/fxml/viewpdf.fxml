@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="1248.0" prefWidth="2179.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.controllers.ViewPdfController">
@@ -15,7 +16,12 @@
       </ImageView>
       <VBox alignment="CENTER" layoutX="1.0" layoutY="-4.0" prefHeight="957.0" prefWidth="1594.0" spacing="10" style="-fx-padding: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <ImageView fx:id="imageView" fitHeight="1162.0" fitWidth="1141.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />
-         <Button onAction="#handleBackButton" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Geri Dön" />
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+            <children>
+               <Button onAction="#handleBackButton" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Geri Dön" />
+               <Button fx:id="downloadButton" onAction="#downloadHandler" prefHeight="38.0" prefWidth="71.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="İndir" />
+            </children>
+         </HBox>
       </VBox>
       <Button fx:id="logoutButton" layoutX="10.0" layoutY="10.0" onAction="#logout" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10;" text="Çıkış Yap" />
    </children>
