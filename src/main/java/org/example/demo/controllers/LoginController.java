@@ -33,6 +33,12 @@ public class LoginController {
     public void handleLogin() throws IOException {
         Database db = Database.getInstance();
         Users result = db.Login(emailField.getText(), passwordField.getText());
+        if (emailField.getText().equals("") || passwordField.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Lütfen tüm alanları doldurunuz.", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         if (result != null) {
             UserSession.getInstance().setUser(result);
             System.out.println("Giriş başarılı!");

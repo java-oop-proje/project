@@ -141,24 +141,4 @@ public class Database {
         }
         return userDetails;
     }
-
-    public Users GetUserById(int userId) {
-        String sql = "SELECT * FROM users WHERE user_id = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, userId);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return new Users(
-                    rs.getInt("user_id"),
-                    rs.getString("firstname"),
-                    rs.getString("lastname"),
-                    rs.getString("email"),
-                    null
-                );
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

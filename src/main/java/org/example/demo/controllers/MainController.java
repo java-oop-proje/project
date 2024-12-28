@@ -61,7 +61,7 @@ public class MainController {
             }
         }
         if (!isPdfGenerated){
-            backButton.setDisable(true);
+            downloadButton.setDisable(true);
         }
     }
     @FXML
@@ -74,7 +74,7 @@ public class MainController {
     @FXML
     private void handleSubmitButtonAction() throws IOException {
         isPdfGenerated=false;
-        backButton.setDisable(true);
+        downloadButton.setDisable(true);
         String streetAddress = streetAddressField.getText();
         String city = cityField.getText();
         String state = stateField.getText();
@@ -145,7 +145,7 @@ public class MainController {
 
             document.close();
             isPdfGenerated = true;
-            backButton.setDisable(false);
+            downloadButton.setDisable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }

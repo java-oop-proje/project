@@ -67,10 +67,8 @@ public class FarukDosyaController {
             Database db = new Database();
             List<UserDetails> userDetails = db.GetUserDetails(UserSession.getInstance().getUser().getId());
 
-            // TableView'ı doldur
             userTableView.getItems().addAll(userDetails);
 
-            // Sütunları ayarlayın
             phoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhoneNumber()));
             addressColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStreetAddress()));
             cityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCity()));
@@ -119,7 +117,6 @@ public class FarukDosyaController {
                 UserDetails selectedDetails = userTableView.getSelectionModel().getSelectedItem();
 
                 if (selectedDetails != null) {
-                    Database db = Database.getInstance();
                     Users user = UserSession.getInstance().getUser();
 
                     if (user != null) {
@@ -147,11 +144,5 @@ public class FarukDosyaController {
             System.err.println("CV Gör hatası: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    public void downloadHandler() {
-        Pdf pdf = new Pdf();
-        pdf.downloadPDF();
     }
 }

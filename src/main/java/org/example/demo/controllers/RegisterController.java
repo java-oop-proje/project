@@ -29,6 +29,11 @@ public class RegisterController {
         Database db = Database.getInstance();
         Users user = new Users(firstName.getText(), lastName.getText(), emailField.getText(), passwordField.getText());
         Users result = db.CreateUser(user);
+        if (firstName.getText().equals("") || lastName.getText().equals("") || emailField.getText().equals("") || passwordField.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Lütfen tüm alanları doldurunuz.", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
         if (result != null) {
             UserSession.getInstance().setUser(result);
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Kayıt başarılı! Giriş ekranına yönlendiriliyorsunuz.", ButtonType.OK);
