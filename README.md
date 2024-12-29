@@ -1,1 +1,2 @@
 # project
+Projeyi çalıştırmak için önce postgresql veritabanı oluşturulmalıdır. Daha sonra projenin içindeki .env dosyası içindeki veritabanı bilgileri düzenlenmelidir. Postgresql için gerekli komutlar schema.sql dosyasında bulunmaktadır. 

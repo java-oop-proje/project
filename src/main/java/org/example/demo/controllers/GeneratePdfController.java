@@ -1,9 +1,7 @@
 package org.example.demo.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -20,7 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
-public class MainController {
+public class GeneratePdfController {
 
     @FXML
     private TextField streetAddressField;
@@ -104,11 +102,13 @@ public class MainController {
 
         try {
             pdf.generatePDF(userDetails, UserSession.getInstance().getUser());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         loadPdfToImageView("./cv.pdf");
+
     }
 
     @FXML
@@ -129,6 +129,9 @@ public class MainController {
         }
         Pdf pdf = new Pdf();
         pdf.downloadPDF();
+
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Pdf indirildi", ButtonType.OK);
+        alert.showAndWait();
     }
 
 

@@ -1,6 +1,6 @@
 package org.example.demo.models;
 
-public class Users {
+public class Users extends User {
     private int id;
     private String firstName;
     private String lastName;

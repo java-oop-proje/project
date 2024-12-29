@@ -30,14 +30,14 @@ public class SceneManager {
 
     public static Scene getMainScene() throws IOException {
         if (mainScene == null) {
-            mainScene = loadScene("/fxml/main.fxml");
+            mainScene = loadScene("/fxml/generatePdf.fxml");
         }
         return mainScene;
     }
 
     public Scene getfarukdosyaScene() throws IOException {
         if (farukdosyaScene == null) {
-            farukdosyaScene = loadScene("/fxml/farukdosya.fxml");
+            farukdosyaScene = loadScene("/fxml/pdfList.fxml");
         }
         return farukdosyaScene;
     }

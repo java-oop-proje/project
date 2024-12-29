@@ -3,7 +3,6 @@ package org.example.demo.controllers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -21,7 +20,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class FarukDosyaController {
+public class PdfListController {
 
     @FXML
     private Button cvOlusturButton;
@@ -62,7 +61,7 @@ public class FarukDosyaController {
 
     @FXML
     public void initialize() {
-        System.out.println("FarukDosyaController initialize");
+        System.out.println("PdfListController initialize");
         try {
             Database db = new Database();
             List<UserDetails> userDetails = db.GetUserDetails(UserSession.getInstance().getUser().getId());

@@ -1,7 +1,9 @@
 package org.example.demo.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
@@ -49,6 +51,10 @@ public class ViewPdfController {
     public void downloadHandler() {
         Pdf pdf = new Pdf();
         pdf.downloadPDF();
+
+
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Pdf indirildi", ButtonType.OK);
+        alert.showAndWait();
     }
 
     public void logout() throws IOException {
